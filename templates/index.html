@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/popper.js/1.12.5/umd/popper.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+</head>
+<body>
+<p>"hello word"</p>
+<!--<form action="form_action.asp" method="get">-->
+number: <input type="text" id="number" name="number" />
+<button onclick="mfunction()" >点击查询</button>
+<!--</form>-->
+<!--<button onclick="click()">点击查询</button>-->
+<script>
+
+  function mfunction(){
+       var val=$("#number").val()
+       var val_list=[1,2,3,917246]
+          console.log(val);
+          $.ajax({
+              type: "get",
+              url: "/getgrade",
+              async: true,
+              data:{number:val},
+              <!--data:JSON.stringify(val),-->
+              success: function (data) {
+                  console.log('成功检测');
+                  console.log(data);
+              },
+              error:function () {
+                  alert("返回数据失败")
+              }
+          });
+          }
+
+        <!--var number=$("#number").val()-->
+        <!--console.log(number)-->
+          <!--const student = {-->
+           <!--id: '123'-->
+        <!--}-->
+
+        <!--console.log(person)-->
+        <!--fetch('http://127.0.0.1:6375/items', {-->
+            <!--method: 'PUT',-->
+            <!--body:JSON.stringify({-->
+            <!--"name": 'apple'-->
+        <!--})-->
+        <!--}).then(function(respones) {-->
+            <!--return respones.json();-->
+        <!--}).then(function(data) {-->
+            <!--console.log(data);-->
+            <!--})-->
+
+        <!--}-->
+</script>
+</body>
+</html>
