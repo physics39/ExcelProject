@@ -1,3 +1,4 @@
+from typing import Optional,List
 from fastapi import FastAPI,Request,Query
 from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel
@@ -10,19 +11,21 @@ import uvicorn
 #router=APIRouter()
 app=FastAPI()
 templates=Jinja2Templates(directory="templates")
-class Data(BaseModel):
-    user: str
+class Item(BaseModel):
+    name: str
+    price: int
 
 #根据学号number获取成绩的接口，前端通过/getgrade地址访问
-@app.get("/getgrade")
-def main(d: str):
-    print(number1)
-    return number1
+@app.post("/getgrade")
+def main(q:Item):
+    # print(item_id)
+    print(q)
+    return {"message":"success"}
 
 @app.get("/")
 def read_root(request:Request):
   return templates.TemplateResponse(
-        "index.html",
+        "base.html",
         {
             "request":request,
         }

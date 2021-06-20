@@ -17,18 +17,20 @@ number: <input type="text" id="number" name="number" />
 <script>
 
   function mfunction(){
-       var val=$("#number").val()
+  var val_dict={"name":"123","price":123}
+var val=$("#number").val()
        var val_list=[1,2,3,917246]
           console.log(val);
           $.ajax({
-              type: "get",
+              type: "post",
               url: "/getgrade",
               async: true,
-              data:{number:val},
+              data:{q:val_dict},
+              <!--data:JSON.stringify(val_dict),-->
               <!--data:JSON.stringify(val),-->
-              success: function (data) {
+              success: function (q) {
                   console.log('成功检测');
-                  console.log(data);
+                  console.log(q);
               },
               error:function () {
                   alert("返回数据失败")
@@ -36,23 +38,6 @@ number: <input type="text" id="number" name="number" />
           });
           }
 
-        <!--var number=$("#number").val()-->
-        <!--console.log(number)-->
-          <!--const student = {-->
-           <!--id: '123'-->
-        <!--}-->
-
-        console.log(person)
-        fetch('http://127.0.0.1:6375/getgrade/917246', {
-            method: 'PUT',
-
-        <!--}).then(function(respones) {-->
-            <!--return respones.json();-->
-        <!--}).then(function(data) {-->
-            <!--console.log(data);-->
-            <!--})-->
-
-        <!--}-->
 </script>
 </body>
 </html>

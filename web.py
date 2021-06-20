@@ -29,7 +29,7 @@ def set_grade():
     return r
 
 #根据学号number获取成绩的接口，前端通过/getgrade地址访问
-@app.get("/getgrade")
+@app.get("/getgrade/")
 def get_grade(number:str):
     print("成功调用get_grade")
     val = r.get(number)
